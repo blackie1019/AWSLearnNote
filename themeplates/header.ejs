@@ -29,7 +29,7 @@
         </li>
         <li ng-class="{active:activeNavLI=='/whitepapers'}"><a href="#whitepapers"><span class="glyphicon glyphicon-paperclip"></span>Whitepapers</a></li>
         <li ng-class="{active:activeNavLI=='/sites'}"><a href="#sites"><span class="glyphicon glyphicon-link"></span>Sites</a></li>
-        <li ng-class="{active:activeNavLI=='/other'}"><a href="#other"><span class="glyphicon glyphicon-th"></span>Other</a></li>
+        <li ng-class="{active:activeNavLI=='/others'}"><a href="#others"><span class="glyphicon glyphicon-th"></span>Others</a></li>
         <li ng-class="{active:activeNavLI=='/author'}"><a href="#author"><span class="glyphicon glyphicon-thumbs-up"></span>Author</a></li>
       </ul>
       </div><!--/.navbar-collapse -->
@@ -42,7 +42,7 @@
       return response.data.showcase;
     });
     $scope.doShowCase=function(img){
-      $location.path("/showcase").search('img',img); 
+      $location.path("/showcases").search('img',img); 
     };
   }
 </script>
