@@ -1,0 +1,21 @@
+[
+    {"name":"01 WEB APPLICATION HOSTING","img":"01_WEB APPLICATION HOSTING.png","type":"single"},
+    {"name":"02 CONTENT & MEDIA SERVING","img":"02_CONTENT & MEDIA SERVING.png","type":"single"},
+    {"name":"03 BATCH PROCESSING","img":"03_BATCH PROCESSING.png","type":"single"},
+    {"name":"04 FAULT TOLERANCE & HIGH AVAILABILITY","img":"04_FAULT TOLERANCE & HIGH AVAILABILITY.png","type":"single"},
+    {"name":"05 LARGE SCALE COMPUTING & HUGE DATA SETS","img":"05_LARGE SCALE COMPUTING & HUGE DATA SETS.png","type":"single"},
+    {"name":"06 ADVERTISEMENT SERVING","img":"06_ADVERTISEMENT SERVING.png","type":"single"},
+    {"name":"07 DISASTER RECOVERY FOR LOCAL APPLICATIONS","img":"07_DISASTER RECOVERY FOR LOCAL APPLICATIONS.png","type":"single"},
+    {"name":"08 FILE SYNCHRONIZATION SERVICE","img":"08_FILE SYNCHRONIZATION SERVICE.png","type":"single"},
+    {"name":"09 MEDIA SHARING","img":"09_MEDIA SHARING.png","type":"single"},
+    {"name":"10 ONLINE GAMES","img":"10_ONLINE GAMES.png","type":"single"},
+    {"name":"11 WEB LOG ANALYSIS","img":"11_WEB LOG ANALYSIS.png","type":"single"},
+    {"name":"12 FINANCIAL SERVICES GRID COMPUTING","img":"12_FINANCIAL SERVICES GRID COMPUTING.png","type":"single"},
+    {"name":"13 E-COMMERCE WEB SITE","img":".png","type":"serial","Parts":
+    	[
+		    {"name":"Part-1","img":"13_E-COMMERCE WEB SITE.png"},
+    		{"name":"Part-2","img":"14_E-COMMERCE WEB SITE_2.png"},
+    		{"name":"Part-3","img":"15_E-COMMERCE WEB SITE_3.png"}
+    	]
+    }
+]

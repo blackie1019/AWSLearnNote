@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AWS Architecture Case Show</title>
+	<!--CSS-->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="css/custom_bootstrap.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/font-awesome-ie7.min.css">
+	<link rel="stylesheet" href="css/custom_icon.css">
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body ng-app="app">
+	<!--AngularJS Content-->
+	<div ui-view></div>
+	<!--JS-->
+	<script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>	
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-ui-router.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<!--Custom JS-->
+	<script>
+	var page = angular.module('app', ['ui.router']);
+	// page.directive('ngGenNavli',function () {
+	// 	return {
+	// 		restrict: 'EA',
+	// 		template: '<li ng-repeat="item in items" ng-switch on="item.type"><a ng-switch-when="serial"></a><a ng-switch-default data-img={{item.img}} ng-click="doShowCase(item.img)">{{item.name}}</a></li>',
+	// 	    scope: {
+	// 	      items: 
+	// 	    },
+	// 	    controller: function($scope,$http) {
+	// 	    	$scope.items= $http.get('data.json').then(function(response) {
+	// 		      return response.data;
+	// 		    });
+	// 	    }
+	// 	};
+	// });
+	page.config(function($stateProvider, $urlRouterProvider){
+	  //
+	  // For any unmatched url, send to /index
+	  $urlRouterProvider.otherwise("/index")
+	  //
+	  // Now set up the states
+	  $stateProvider
+	    .state('index', {
+	        url: "/index",
+	        templateUrl: "themeplates/index.ejs"
+	    })
+	    .state('showcase', {
+	        url: "/showcase?img",
+	        templateUrl: "themeplates/showcase.ejs"
+	    })
+	   	.state('whitepapers', {
+	        url: "/whitepapers",
+	        templateUrl: "themeplates/whitepapers.ejs"
+	    })
+	    .state('sites', {
+	        url: "/sites",
+	        templateUrl: "themeplates/sites.ejs"
+	    })
+	    .state('other', {
+	        url: "/other",
+	        templateUrl: "themeplates/other.ejs"
+	    })
+	    .state('keywords', {
+	        url: "/keywords",
+	        templateUrl: "themeplates/keywords.ejs"
+	    })
+
+	    .state('author', {
+	        url: "/author",
+	        templateUrl: "themeplates/author.ejs"
+	    })
+	});
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<div ng-include src="'themeplates/header.ejs'"></div>
+<div class="container-narrow" ng-controller="PageCtrl">
+	{{welcomeStr}}123
+</div>
+<div ng-include src="'themeplates/footer.ejs'"></div>
+<script>
+	function PageCtrl($scope,$http,$location){
+		$scope.welcomeStr="Hi";
+	}
+</script>
