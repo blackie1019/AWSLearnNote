@@ -5,8 +5,8 @@
 <div ng-include src="'themeplates/footer.ejs'"></div>
 <script>
 	function PageCtrl($scope,$http,$location,$route){
-		// $scope.$on('$routeUpdate',function(){
-		// 	console.log(123);
-		// });
+	    $scope.items= $http.get('data.json').then(function(response) {
+	      return response.data.keywords;
+	    });
 	}
 </script>

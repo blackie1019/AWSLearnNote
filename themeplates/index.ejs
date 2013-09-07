@@ -1,10 +1,28 @@
 <div ng-include src="'themeplates/header.ejs'"></div>
 <div class="container-narrow" ng-controller="PageCtrl">
-	{{welcomeStr}}123
+	<div class="jumbotron">
+		<h1>Hi!</h1>
+		<p>{{index.welcome}}</p>
+		<div class="text-right">
+			<a class="btn btn-info" href="#author">Contact me</a>
+		</div>
+		<ul class="list-group">
+  			<li ng-repeat="update in index.updates" class="active list-group-item">
+  				<h4 class="list-group-item-heading">Update log</h4>
+  			</li>
+		    <li ng-repeat="update in index.updates" class="list-group-item">
+		    	<h4 class="list-group-item-heading">{{update.time}}</h4>
+          		<p class="list-group-item-text">{{update.note}}</p>
+		    </li>
+		</ul>
+	</div>
 </div>
 <div ng-include src="'themeplates/footer.ejs'"></div>
 <script>
 	function PageCtrl($scope,$http,$location){
-		$scope.welcomeStr="Hi";
+		$scope.index= $http.get('data.json').then(function(response) {
+	      return response.data.index;
+	    });
+	    console.log($scope.index);
 	}
 </script>

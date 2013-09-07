@@ -1,10 +1,17 @@
 <div ng-include src="'themeplates/header.ejs'"></div>
 <div class="container-narrow" ng-controller="PageCtrl">
-	whitepapers
+	 <li ng-repeat="item in items">
+      	<a ng-click="openBrowser(item.url)">{{item.name}}</a>
+    </li>
 </div>
 <div ng-include src="'themeplates/footer.ejs'"></div>
 <script>
 	function PageCtrl($scope,$http,$location){
-
+	    $scope.items= $http.get('data.json').then(function(response) {
+	      return response.data.whitepapers;
+	    });
+	    $scope.openBrowser=function(url){
+	    	openBrowser(url);
+	    };
 	}
 </script>
