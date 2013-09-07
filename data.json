@@ -5,7 +5,9 @@
             {"time":"2013/9/8","note":"新增Showcases資料"}
         ]
     },
-    "keywords":[],
+    "keywords":[
+        {"key":"test","value":"test","url":"http://www.google.com"},{"key":"test","value":"test","url":"http://www.google.com"}
+    ],
     "showcase":[
         {"name":"01 WEB APPLICATION HOSTING","img":"01_WEB APPLICATION HOSTING.png","type":"single"},
         {"name":"02 CONTENT & MEDIA SERVING","img":"02_CONTENT & MEDIA SERVING.png","type":"single"},

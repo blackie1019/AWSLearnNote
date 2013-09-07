@@ -1,6 +1,31 @@
 <div ng-include src="'themeplates/header.ejs'"></div>
 <div class="container-narrow" ng-controller="PageCtrl">
-	keywords
+	<div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">Keywords</h3>
+      </div>
+      <div>
+      <div class="panel-group" id="accordion">
+        <div ng-repeat="item in items" class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href=#collapse{{$index}}>
+                {{item.key}}
+              </a>
+            </h4>
+          </div>
+          <div id=collapse{{$index}} class="panel-collapse collapse" style="height: 0px;">
+            <div class="panel-body">
+				{{item.value}}
+				<div>
+				<a ng-click="openBrowser(item.url)">From</a>
+				</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
 </div>
 <div ng-include src="'themeplates/footer.ejs'"></div>
 <script>
@@ -8,5 +33,8 @@
 	    $scope.items= $http.get('data.json').then(function(response) {
 	      return response.data.keywords;
 	    });
+	    $scope.openBrowser=function(url){
+	    	openBrowser(url);
+	    };
 	}
 </script>
