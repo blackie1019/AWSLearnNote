@@ -30,13 +30,13 @@
         }
     ],
     "whitepapers":[
-        {"name":"Overview of AWS Whitepaper","url":"http://media.amazonwebservices.com/AWS_Overview.pdf"}
+        {"name":"Overview of AWS Whitepaper","url":"http://media.amazonwebservices.com/AWS_Overview.pdf","type":"pdf"}
     ],
     "sites":[
-        {"name":"[FB]AWSUGTW","url":"https://www.facebook.com/groups/awsugtw/","type":"fbgroup"},
+        {"name":"AWSUGTW","url":"https://www.facebook.com/groups/awsugtw/","type":"fb"},
         {"name":"AWSUG in Taiwan","url":"http://awsug.tw/","type":"site"}
     ],
     "other":[
-        {"name":"AWS認證經驗談","url":"https://speakerdeck.com/jonatw/aws-ren-zheng-jing-yan-fen-xiang","type":"slide"}
+        {"name":"AWS認證經驗談","url":"https://speakerdeck.com/jonatw/aws-ren-zheng-jing-yan-fen-xiang","type":"ppt"}
     ]
 }

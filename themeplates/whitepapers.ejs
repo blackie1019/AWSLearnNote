@@ -7,7 +7,7 @@
       <div>
         <ul class="list-group">
 		    <li ng-repeat="item in items" class="list-group-item">
-				<a class="panel-title" ng-click="openBrowser(item.url)">{{item.name}}</a>
+				<a class="panel-title" ng-click="openBrowser(item.url)"><span aria-hidden="true" class={{getIcon(item.type)}}>{{item.name}}</a>
 		    </li>
 		</ul>
       </div>
@@ -21,6 +21,9 @@
 	    });
 	    $scope.openBrowser=function(url){
 	    	openBrowser(url);
+	    };
+	    $scope.getIcon=function(type){
+	    	return  iconClassName(type);
 	    };
 	}
 </script>
