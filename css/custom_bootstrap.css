@@ -7,11 +7,15 @@
 	margin-right: 5px;
 }
 .navbar-brand {
-padding: 5px 15px 5px 15px;
+	padding: 5px 15px 5px 15px;
 }
 a {
 	color: #333434;
 }
 a:hover{
 	color: #db7107;
+}
+.dropdown-header {
+	color: #234567;
+	font-weight: bold;
 }
