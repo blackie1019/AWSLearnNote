@@ -1,5 +1,5 @@
 <div ng-include src="'themeplates/header.ejs'"></div>
-<div class="container-narrow" ng-controller="PageCtrl">
+<div class="container-narrow" ng-controller="authorPageCtrl">
 	<h2>Created by Blackie</h2>
 	<div class="list-group">
 	    <a href="https://github.com/blackie1019/AWSArchitecture.git" target="_blank" class="list-group-item"><span aria-hidden="true" class="glyphicon icon-github"></span>[Source code]</a>
@@ -8,8 +8,3 @@
 	</div>
 </div>
 <div ng-include src="'themeplates/footer.ejs'"></div>
-<script>
-	function PageCtrl($scope,$http,$location){
-		$scope.welcomeStr="Hi";
-	}
-</script>

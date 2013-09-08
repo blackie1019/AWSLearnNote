@@ -10,7 +10,6 @@ function openBrowser(linkURL){
     }
 }
 function iconClassName(type){
-    console.log(type);
     var iconClass="glyphicon "; 
     switch(type){
         case "fb":

@@ -11,20 +11,17 @@
 
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
+        <li ng-class="{active:activeNavLI=='/services'}" class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-file"></span>Services <b class="caret"></b></a>
+          <ul class="dropdown-menu" >
+            <ng-navli-services ng-repeat="item in services" item="item"></ng-navli-services>
+          </ul>
+        </li>
         <li ng-class="{active:activeNavLI=='/keywords'}"><a href="#keywords"><span class="glyphicon glyphicon-book"></span>Keywords</a></li>
         <li ng-class="{active:activeNavLI=='/showcase'}" class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-file"></span>Showcases <b class="caret"></b></a>
-          <ul ng-gen-navli class="dropdown-menu" >
-            <li ng-repeat="item in items" ng-switch on="item.type">
-              <a ng-switch-when="serial"></a>
-
-              <a ng-switch-default data-img={{item.img}} ng-click="doShowCase(item.img)">{{item.name}}</a>
-            </li>
-<!--        <li class="divider"></li>
-            <li class="dropdown-header">14 E-COMMERCE WEB SITE</li>
-            <li><a href="#">Part-1</a></li>
-            <li><a href="#">Part-2</a></li>
-            <li><a href="#">Part-3</a></li> -->
+          <ul class="dropdown-menu" >
+            <ng-navli-showcases ng-repeat="item in showcases" item="item"></ng-navli-showcases>
           </ul>
         </li>
         <li ng-class="{active:activeNavLI=='/whitepapers'}"><a href="#whitepapers"><span class="glyphicon glyphicon-paperclip"></span>Whitepapers</a></li>
@@ -35,14 +32,3 @@
       </div><!--/.navbar-collapse -->
   </div>
 </div>
-<script>
-  function HeaderCtrl($scope,$http,$location){
-    $scope.activeNavLI= $location.path();
-    $scope.items= $http.get('data.json').then(function(response) {
-      return response.data.showcase;
-    });
-    $scope.doShowCase=function(img){
-      $location.path("/showcases").search('img',img); 
-    };
-  }
-</script>

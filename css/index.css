@@ -1,6 +1,12 @@
 .showcase_img_s{
 	width: 100%;
 }
+ng-navli-services li,ng-navli-showcases li{
+	white-space: nowrap;
+	margin-left: 10px;
+	margin-right: 10px;
+	min-width: 320px;
+}
 /*
 f7a64d
 f8981d
