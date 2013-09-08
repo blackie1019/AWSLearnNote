@@ -76,7 +76,9 @@ function HeaderCtrl($scope,$http,$location,appData){
 	});
 }
 function indexPageCtrl($scope,$http,$location,appData){
-	$scope.index= appData.index;
+	appData.async().then(function(data){
+		$scope.index= data.index;
+	});
 }
 function keywordsPageCtrl($scope,$http,$location,$route,appData){
 	appData.async().then(function(data){
