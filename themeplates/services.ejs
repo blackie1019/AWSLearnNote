@@ -1,5 +1,5 @@
 <div ng-include src="'themeplates/header.ejs'"></div>
 <div class="container-narrow" ng-controller="servicesPageCtrl">
-  <ng-services-md-html content="htmlResult"></ng-services-md-html>
+  <div class="md" ng-bind-html="trustedHtml"></div>
 </div>
 <div ng-include src="'themeplates/footer.ejs'"></div>

@@ -54,19 +54,19 @@ app.directive('ngNavliShowcases',function ($compile,$location) {
         }
     };
 });
-app.directive('ngServicesMdHtml',function ($compile) {
-    return {
-        restrict: "EA",
-        replace: true,
-        link: function(scope, element, attrs) {
-            element.html('<div class="md" ng-bind-html-unsafe="content"></div>').show();
-            $compile(element.contents())(scope);
-        },
-        scope: {
-            content:'='
-        }
-    };
-});
+// app.directive('ngServicesMdHtml',function ($compile) {
+//     return {
+//         restrict: "EA",
+//         replace: true,
+//         link: function(scope, element, attrs) {
+//             element.html('<div ng-bind-html="trustedHtml"></div>').show();
+//             $compile(element.contents())(scope);
+//         },
+//         scope: {
+//             content:'='
+//         }
+//     };
+// });
 /*Factory*/
 app.factory('appData',function($http){
 	var appData={
@@ -93,9 +93,11 @@ function indexPageCtrl($scope,$http,$location,appData){
 		$scope.index= data.index;
 	});
 }
-function servicesPageCtrl($scope,$http,$location,$compile){
+function servicesPageCtrl($scope,$http,$location,$sce){
     openMD($location.search().md).async($http).then(function(data){
-        $scope.htmlResult=convertMDtoHTML(data);
+        $scope.trustedHtml = $sce.trustAsHtml(convertMDtoHTML(data));
+    },function(error){
+        $scope.trustedHtml = $sce.trustAsHtml("Still working on it");
     });
 }
 function keywordsPageCtrl($scope,$http,$location,$route,appData){
