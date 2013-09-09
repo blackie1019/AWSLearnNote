@@ -3,12 +3,12 @@ var app = angular.module('app', ['ui.router']);
 /*Navli*/
 app.directive('ngNavliServices',function ($compile,$location) {
 	var getTemplate=function(itemType){
-			var template=' <li class="divider"></li><li class="dropdown-header">{{item.type}}</li><li ng-repeat="service in item.items"><a ng-click="doService(item.type,service.name)">{{service.name}}</a></li>';
+			var template=' <li class="divider"></li><li class="dropdown-header">{{item.type}}</li><li ng-repeat="service in item.items"><a ng-click="doService(item.type,service.index,service.name)">{{service.name}}</a></li>';
 			return template;
 		},
 		linker = function(scope, element, attrs) {
-	        scope.doService = function (type,name){
-	        	console.log(type,name);
+	        scope.doService = function (type,index,name){
+                $location.path("/services").search('md',index);
 	        }
 	        element.html(getTemplate(scope.item.type)).show();
 	        $compile(element.contents())(scope);
@@ -23,34 +23,47 @@ app.directive('ngNavliServices',function ($compile,$location) {
     };
 });
 app.directive('ngNavliShowcases',function ($compile,$location) {
-	var serialTemplate=' <li class="divider"></li><li class="dropdown-header">{{item.name}}</li><li ng-repeat="part in item.Parts"><a data-img={{part.img}} ng-click="doShowCase(part.img)">{{part.name}}</a></li>',
-		singleTemplate='<li><a data-img={{item.img}} ng-click="doShowCase(item.img)">{{item.name}}</a></li>',
-		getTemplate=function(itemType){
-			var template='';
-			switch(itemType){
-				case "single":
-					template = singleTemplate;
-					break;
-				case "serial":
-					template = serialTemplate;
-					break;
-			}
-			return template;
-		},
-		linker = function(scope, element, attrs) {
-	        scope.doShowCase = function (img){
-	        	$location.path("/showcases").search('img',img);
-	        }
-	        element.html(getTemplate(scope.item.type)).show();
-	        $compile(element.contents())(scope);
+    var serialTemplate=' <li class="divider"></li><li class="dropdown-header">{{item.name}}</li><li ng-repeat="part in item.Parts"><a data-img={{part.img}} ng-click="doShowCase(part.img)">{{part.name}}</a></li>',
+        singleTemplate='<li><a data-img={{item.img}} ng-click="doShowCase(item.img)">{{item.name}}</a></li>',
+        getTemplate=function(itemType){
+            var template='';
+            switch(itemType){
+                case "single":
+                    template = singleTemplate;
+                    break;
+                case "serial":
+                    template = serialTemplate;
+                    break;
+            }
+            return template;
+        },
+        linker = function(scope, element, attrs) {
+            scope.doShowCase = function (img){
+                $location.path("/showcases").search('img',img);
+            }
+            element.html(getTemplate(scope.item.type)).show();
+            $compile(element.contents())(scope);
 
-	    };
-	return {
+        };
+    return {
         restrict: "EA",
         replace: true,
         link: linker,
         scope: {
             item:'='
+        }
+    };
+});
+app.directive('ngServicesMdHtml',function ($compile) {
+    return {
+        restrict: "EA",
+        replace: true,
+        link: function(scope, element, attrs) {
+            element.html('<div class="md" ng-bind-html-unsafe="content"></div>').show();
+            $compile(element.contents())(scope);
+        },
+        scope: {
+            content:'='
         }
     };
 });
@@ -79,6 +92,11 @@ function indexPageCtrl($scope,$http,$location,appData){
 	appData.async().then(function(data){
 		$scope.index= data.index;
 	});
+}
+function servicesPageCtrl($scope,$http,$location,$compile){
+    openMD($location.search().md).async($http).then(function(data){
+        $scope.htmlResult=convertMDtoHTML(data);
+    });
 }
 function keywordsPageCtrl($scope,$http,$location,$route,appData){
 	appData.async().then(function(data){
@@ -147,7 +165,7 @@ app.config(function($stateProvider, $urlRouterProvider){
         templateUrl: "themeplates/index.ejs"
     })
     .state('services', {
-        url: "/services",
+        url: "/services?md",
         templateUrl: "themeplates/services.ejs"
     })
     .state('keywords', {

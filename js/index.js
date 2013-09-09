@@ -1,3 +1,20 @@
+function openMD(url){
+    var fileContent={
+            async:function($http){
+                var content= $http.get('md/'+url+'.md').then(function(response) {
+                    return response.data;
+                });
+                return content;
+            }
+        };
+    return fileContent;
+}
+function convertMDtoHTML(text){
+    var converter = new Showdown.converter(),
+        html=converter.makeHtml(text);
+        html=html.replace(/\n/g, "");
+    return html;
+}
 function openBrowser(linkURL){
     var tempURL=encodeURI(linkURL);
     if(navigator.userAgent.match(/(iPhone|iPod|iPad|Android|IEMobile)/)){
@@ -6,7 +23,6 @@ function openBrowser(linkURL){
     }else{
           var win=window.open(tempURL, '_blank');
           win.focus();
-        // window.location.href=tempURL;
     }
 }
 function iconClassName(type){

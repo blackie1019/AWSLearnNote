@@ -1,30 +1,5 @@
 <div ng-include src="'themeplates/header.ejs'"></div>
-<div class="container-narrow" ng-controller="keywordsPageCtrl">
-	<div class="panel panel-info">
-      <div class="panel-heading">
-        <h3 class="panel-title">Keywords</h3>
-      </div>
-      <div>
-      <div class="panel-group" id="accordion">
-        <div ng-repeat="item in items" class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href=#collapse{{$index}}>
-                {{item.key}}
-              </a>
-            </h4>
-          </div>
-          <div id=collapse{{$index}} class="panel-collapse collapse" style="height: 0px;">
-            <div class="panel-body">
-				{{item.value}}
-				<div>
-          <button type="button" class="btn btn-info" ng-click="openBrowser(item.url)">From</button>
-				</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      </div>
-    </div>
+<div class="container-narrow" ng-controller="servicesPageCtrl">
+  <ng-services-md-html content="htmlResult"></ng-services-md-html>
 </div>
 <div ng-include src="'themeplates/footer.ejs'"></div>
