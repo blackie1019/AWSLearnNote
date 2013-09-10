@@ -1,5 +1,7 @@
-.showcase_img_s{
+.div_showcase_img{
 	padding:0px 20px 0px 20px; 
+}
+.showcase_img_s{
 	width: 100%;
 }
 ng-navli-services li,ng-navli-showcases li{

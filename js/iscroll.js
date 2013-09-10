@@ -99,7 +99,7 @@ var m = Math,
 			bounceLock: false,
 			momentum: true,
 			lockDirection: true,
-			useTransform: true,
+			useTransform: false,
 			useTransition: false,
 			topOffset: 0,
 			checkDOMChanges: false,		// Experimental
