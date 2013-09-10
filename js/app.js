@@ -100,7 +100,7 @@ function servicesPageCtrl($scope,$http,$location,$sce){
         $scope.trustedHtml = $sce.trustAsHtml("Still working on it");
     });
 }
-function keywordsPageCtrl($scope,$http,$location,$route,appData){
+function keywordsPageCtrl($scope,$http,$location,appData){
 	appData.async().then(function(data){
 		$scope.items= data.keywords;
 	});
@@ -108,11 +108,14 @@ function keywordsPageCtrl($scope,$http,$location,$route,appData){
     	openBrowser(url);
     };
 }
-function showcasesPageCtrl($scope,$http,$location,$route,appData){
-	$scope.imgURL=$location.search().img;
+function showcasesPageCtrl($scope,$http,$location,appData){
+	var myScroll;
+    $scope.imgURL=$location.search().img;
 	appData.async().then(function(data){
 	    $scope.items= data.showcases;
+
 	});
+    myScroll = new iScroll('div_showcase_img',{ zoom: true });
     $scope.openBrowser=function(url){
     	openBrowser(url);
     };
